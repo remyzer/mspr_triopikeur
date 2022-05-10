@@ -8,15 +8,15 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public class User implements UserDetails{
 	
-	private String email;
+	private String login;
 	private String password;
 	private boolean active = true;
 	
-	public String getEmail() {
-		return email;
+	public String getLogin() {
+		return login;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setLogin(String email) {
+		this.login = email;
 	}
 	
 	@Override
@@ -33,7 +33,7 @@ public class User implements UserDetails{
 	}
 	@Override
 	public String getUsername() {
-		return email;
+		return login;
 	}
 	@Override
 	public boolean isAccountNonExpired() {

@@ -20,13 +20,13 @@ public class UserDAO {
 	@Autowired
 	private PasswordEncoder passwordEncoder; //pattern IOC
 	
-	public User getUserByEmail(String email) throws SQLException {
-		String sql = "select email, password from user where email = '" + email +"'";
+	public User getUserByEmail(String login) throws SQLException {
+		String sql = "select login, mot_de_passe from utilisateur where login = '" + login +"'";
 		Statement stmt = ds.getConnection().createStatement();
 		ResultSet rs = stmt.executeQuery(sql);
 		if (rs.next()) {
 			User user = new User();
-			user.setEmail(rs.getString(1));
+			user.setLogin(rs.getString(1));
 			user.setPassword(rs.getString(2));
 			return user;
 		} else {
@@ -35,7 +35,7 @@ public class UserDAO {
 	}
 	public void addUser(User user) throws SQLException {
 		String password = passwordEncoder.encode(user.getPassword());
-		String sql = "Insert into user (email,password) value ('"+ user.getEmail() +"', '" + password + "')";
+		String sql = "Insert into utilisateur (login,mot_de_passe) value ('"+ user.getLogin() +"', '" + password + "')";
 		Statement stmt = ds.getConnection().createStatement();
 		stmt.executeUpdate(sql);
 	}
