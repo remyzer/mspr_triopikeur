@@ -15,6 +15,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	
 	@PostMapping("/public/register")
 	public void addUser(User user) {
 		userService.addUser(user);
