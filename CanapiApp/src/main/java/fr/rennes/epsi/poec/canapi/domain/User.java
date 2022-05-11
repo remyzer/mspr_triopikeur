@@ -31,8 +31,8 @@ public class User implements UserDetails{
 	public String getLogin() {
 		return login;
 	}
-	public void setLogin(String email) {
-		this.login = email;
+	public void setLogin(String login) {
+		this.login = login;
 	}
 	
 	@Override
@@ -66,5 +66,13 @@ public class User implements UserDetails{
 	@Override
 	public boolean isEnabled() {
 		return active;
+	}
+	
+	public String createLogin(String nom,String prenom) {
+		StringBuilder str = new StringBuilder();
+		str.append(prenom);
+		String login = Character.toString(str.charAt(0)) + nom;
+		login.toLowerCase();
+		return login;
 	}
 }

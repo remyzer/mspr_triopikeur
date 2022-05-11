@@ -1,6 +1,6 @@
 package fr.rennes.epsi.poec.canapi.service;
 
-import java.sql.SQLException;
+import java.sql.SQLException; 
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -45,4 +45,5 @@ public class UserService implements UserDetailsService {
 			logger.error(e.getMessage(),e);
 		}
 	}
+	
 }
