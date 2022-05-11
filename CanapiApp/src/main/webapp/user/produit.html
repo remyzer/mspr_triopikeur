@@ -5,19 +5,25 @@
 	
 	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-	<script src="/js/produits-add.js" defer></script>
+	<script type="/js/getTypeProduit.js" defer></script>
 </head>
 <body>
-	<div id="app">
+	<div >
 		<h1>Ajout produit</h1>
 		<div>
+			<form action="/user/produit" method="post">
 			Nom du produit<br>
-			<input v-model="produit.libelle"><br>
+			<input name="libelle"><br>
 			Prix du produit<br>
-			<input v-model="produit.prix"><br>
+			<input name="prix"><br>
 			Type du produit<br>
-			<input v-model="produit.type_produit_id"><br>
-			<button v-onclick="submit()">Envoyer</button>
+			<input name="type"><br>
+			<!-- <select name="type">
+				<option id="typeProduit" v-for="typeProduit in typeProduit" value="typeProduit.id">{{ typeProduit.id }} - {{ typeProduit.libelle }}</option>
+			</select> -->
+			<br>
+			<button>Envoyer</button>
+			</form>
 		</div>
 	</div>
 </body>

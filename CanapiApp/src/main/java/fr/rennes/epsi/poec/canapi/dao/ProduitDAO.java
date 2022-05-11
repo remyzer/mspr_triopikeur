@@ -35,10 +35,12 @@ public class ProduitDAO {
 			produit.setId(rs.getInt(1));
 			produit.setLibelle(rs.getString(2));
 			produit.setPrix(rs.getDouble(3));
-			produit.setType(rs.getInt(4));
+			produit.setType(rs.getString(4));
 			
 			list.add(produit);
 		}		
 		return list;
 	}
+	
+	
 }

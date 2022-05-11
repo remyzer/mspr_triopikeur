@@ -3,7 +3,7 @@ package fr.rennes.epsi.poec.canapi.domain;
 public class Produit {
 	
 	private int id;
-	private int type;
+	private String type;
 	private String libelle;
 	private double prix;
 	
@@ -13,10 +13,10 @@ public class Produit {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getType() {
+	public String getType() {
 		return type;
 	}
-	public void setType(int type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 	public String getLibelle() {
