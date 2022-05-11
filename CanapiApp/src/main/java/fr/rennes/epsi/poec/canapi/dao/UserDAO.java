@@ -35,7 +35,7 @@ public class UserDAO {
 	}
 	public void addUser(User user) throws SQLException {
 		String password = passwordEncoder.encode(user.getPassword());
-		String sql = "Insert into utilisateur (login,mot_de_passe) value ('"+ user.getLogin() +"', '" + password + "')";
+		String sql = "Insert into utilisateur (nom,prenom,login,mot_de_passe) value ('"+ user.getNom() +"', '" + user.getPrenom() +"', '" + user.getLogin() +"', '" + password + "')";
 		Statement stmt = ds.getConnection().createStatement();
 		stmt.executeUpdate(sql);
 	}
