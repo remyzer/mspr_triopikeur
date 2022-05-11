@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="/css/produits.css" rel="stylesheet">
+	
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script src="/js/produits-add.js" defer></script>
+</head>
+<body>
+	<div id="app">
+		<h1>Ajout produit</h1>
+		<div>
+			Nom du produit<br>
+			<input v-model="produit.libelle"><br>
+			Prix du produit<br>
+			<input v-model="produit.prix"><br>
+			Type du produit<br>
+			<input v-model="produit.type_produit_id"><br>
+			<button v-onclick="submit()">Envoyer</button>
+		</div>
+	</div>
+</body>
+</html>
