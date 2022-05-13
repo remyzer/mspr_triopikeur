@@ -16,11 +16,11 @@
 			<input name="libelle"><br>
 			Prix du produit<br>
 			<input name="prix"><br>
-			Type du produit<br>
-			<input name="type"><br>
-			<!-- <select name="type">
-				<option id="typeProduit" v-for="typeProduit in typeProduit" value="typeProduit.id">{{ typeProduit.id }} - {{ typeProduit.libelle }}</option>
-			</select> -->
+			Type Canapé<br>
+			<!--  <input name="type"><br>-->
+			<select name="type">
+				<option id="typeProduit" v-for="type in typeProduit" v-bind:value="type.id">{{ type.id }} - {{ type.libelle }}</option>
+			</select>
 			<br>
 			<button>Envoyer</button>
 			</form>

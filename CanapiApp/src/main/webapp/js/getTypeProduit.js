@@ -2,18 +2,16 @@ var typeProduit = new Vue({
 	el: '#typeProduit',
 	data() {
 		return {
-			typeproduit: {}
+			typeProduit:[]
 		}
 	},
 	mounted() {
+		axios.get('/user/listTypeProduit')
+				.then(response => {
+					this.typeProduit = response.data.data
+				})
 	},
 	methods: {
-			submit(){
-				axios.post('/user/listTypeProduit', this.typeproduit)
-				.then(response => {
-					
-				})
-			}
-		}
 		
+	}
 	});
