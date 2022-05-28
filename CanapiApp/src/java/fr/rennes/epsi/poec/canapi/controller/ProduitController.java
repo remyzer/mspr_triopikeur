@@ -15,16 +15,24 @@ public class ProduitController {
 
 	@Autowired
 	private ProduitService produitService;
-	/*
-	@GetMapping("/public/produits")
+
+	@GetMapping("/public/listProduit")
 	public List<Produit> getList() {
 		return produitService.getList();
 	}
-	*/
-	@PostMapping("/user/produit")
+
+	@PostMapping("/public/addProduit")
 	public void addProduit(Produit produit) {
 		produitService.addProduit(produit);
-		
 	}
-	
+
+	@PostMapping("/public/updateProduit")
+	public void updateProduit(Produit produit) {
+		produitService.updateProduit(produit);
+	}
+
+	@PostMapping("/public/deleteProduit")
+	public void deleteProduit(Produit produit) {
+		produitService.deleteProduit(produit);
+	}
 }

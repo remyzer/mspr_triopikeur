@@ -41,6 +41,14 @@ public class ProduitDAO {
 		}		
 		return list;
 	}
+
+	public void updateProduit(Produit produit) throws SQLException {
+		//TODO
+	}
+
+	public void deleteProduit(Produit produit) throws SQLException {
+		//TODO
+	}
 	
 	
 }

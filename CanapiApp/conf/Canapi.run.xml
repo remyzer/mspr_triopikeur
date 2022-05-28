@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Canapi" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="fr.rennes.epsi.poec.canapi.CanapiApplication" />
+    <module name="canapi" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
