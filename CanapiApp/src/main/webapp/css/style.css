@@ -28,26 +28,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .logo_canapi {
-    margin-top: 20px;
-    width: 75%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 50%;
     transition: all .2s ease-in;
 }
 
 .logo_canapi:hover {
-    margin-top: 20px;
-    width: 75%;
+    width: 50%;
     transition: all .2s ease-in;
     outline-offset: 15px;
     transform: scale(0.97);
 }
 
 .welcome_title {
-    padding: 40px;
+    padding: 20px;
+    margin-bottom: 40px;
 }
 
 .email_btn {
     margin: 0 auto;
-    padding-bottom: 30px;
+    padding-bottom: 10px;
 }
 
 .send_email_button {
@@ -64,5 +65,56 @@ h1, h2, h3, h4, h5, h6 {
     color: white;
     border: var(--blue-color-hover);
     outline-offset: 15px;
-    transform: scale(0.9);
+    transform: scale(0.96);
+}
+
+.table {
+    margin-bottom: 30px;
+    font-size: 0.8em;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 10px 5px 20px rgb(229, 229, 229);
+}
+
+thead, tbody {
+    text-align: center;
+}
+
+
+h2 {
+    font-size: 0.9em;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+
+.logout {
+    color: var(--font-color);
+    font-size: 0.7em;
+}
+
+.logout:hover {
+    color: rgb(211, 211, 211);
+}
+
+.dashboard {
+    width: 70%;
+    margin-left: 30px;
+}
+
+.dashboard_header {
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: 600;
+    background-color: var(--blue-color);
+    color: white;
+    border-radius: 20px;
+}
+
+.boutons_acces_principaux {
+    text-align: center;
+    padding: 30px;
+}
+
+.main_access_btn {
+    padding: 20px;
 }
