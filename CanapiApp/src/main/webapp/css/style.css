@@ -3,6 +3,7 @@
 :root {
     --background-color: #F1F1F1;
     --blue-color: #5E17EB;
+    --blue-color-hover: #5e17ebe8;
     --green-color: #5DB553;
     --red-color: #FF2B2B;
     --font-color: #707070;
@@ -29,6 +30,15 @@ h1, h2, h3, h4, h5, h6 {
 .logo_canapi {
     margin-top: 20px;
     width: 75%;
+    transition: all .2s ease-in;
+}
+
+.logo_canapi:hover {
+    margin-top: 20px;
+    width: 75%;
+    transition: all .2s ease-in;
+    outline-offset: 15px;
+    transform: scale(0.97);
 }
 
 .welcome_title {
@@ -45,4 +55,14 @@ h1, h2, h3, h4, h5, h6 {
     background-color: var(--blue-color);
     color: white;
     border: var(--blue-color);
+    transition: all .2s ease-in;
+}
+
+.send_email_button:hover {
+    font-size: 0.8em;
+    background-color: var(--blue-color-hover);
+    color: white;
+    border: var(--blue-color-hover);
+    outline-offset: 15px;
+    transform: scale(0.9);
 }
