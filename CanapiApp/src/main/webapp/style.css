@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600&display=swap');
+
+:root {
+    --background-color: #F1F1F1;
+    --blue-color: #5E17EB;
+    --green-color: #5DB553;
+    --red-color: #FF2B2B;
+    --font-color: #707070;
+}
+
+
+body {
+    width: 100%;
+    overflow-x: hidden;
+    color:var(--font-color);
+    font-family: 'Raleway', 'sans-serif';
+    font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 500;
+    letter-spacing: 1.6px;
+}
+
+.aside_content {
+    background-color: var(--background-color);
+}
+
+.logo_canapi {
+    margin-top: 20px;
+    width: 75%;
+}
+
+.welcome_title {
+    padding: 40px;
+}
+
+.email_btn {
+    margin: 0 auto;
+    padding-bottom: 30px;
+}
+
+.send_email_button {
+    font-size: 0.8em;
+    background-color: var(--blue-color);
+    color: white;
+    border: var(--blue-color);
+}
