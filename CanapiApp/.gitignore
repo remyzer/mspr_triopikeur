@@ -1,2 +1,7 @@
 /target/
 /bin/
+/.idea/
+/node_modules/
+/package-lock.json
+/.classpath
+/.project
