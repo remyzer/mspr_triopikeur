@@ -3,7 +3,6 @@
 :root {
     --background-color: #F1F1F1;
     --blue-color: #5E17EB;
-    --blue-color-hover: #5e17ebe8;
     --green-color: #5DB553;
     --red-color: #FF2B2B;
     --font-color: #707070;
@@ -51,20 +50,19 @@ h1, h2, h3, h4, h5, h6 {
     padding-bottom: 10px;
 }
 
-.send_email_button {
-    font-size: 0.8em;
+.mail, .mail:focus {
     background-color: var(--blue-color);
+    text-decoration: none;
     color: white;
-    border: var(--blue-color);
+    font-size: 0.8em;
     transition: all .2s ease-in;
+    border: 1px solid var(--blue-color);
 }
 
-.send_email_button:hover {
-    font-size: 0.8em;
-    background-color: var(--blue-color-hover);
-    color: white;
-    border: var(--blue-color-hover);
-    outline-offset: 15px;
+.mail:hover {
+    background-color: white;
+    border: 1px solid var(--blue-color);
+    color: var(--blue-color);
     transform: scale(0.96);
 }
 
@@ -117,4 +115,35 @@ h2 {
 
 .main_access_btn {
     padding: 20px;
+    width: 150px;
+    transition: all .2s ease-in;
+}
+
+.main_access_btn:hover {
+    transform: scale(0.96);
+}
+
+.card-title {
+    margin-bottom: 30px;
+}
+
+.boutons_acces_options {
+    margin-bottom: 30px;
+}
+
+.option_access_btn {
+    font-size: 0.85em;
+    transition: all .2s ease-in;
+    width: 100px;
+}
+
+.option_access_btn:hover {
+    transform: scale(0.96);
+    background-color: white;
+    outline: var(--font-color);
+    color: var(--font-color);
+}
+
+.btn:focus {
+    box-shadow: none;
 }
