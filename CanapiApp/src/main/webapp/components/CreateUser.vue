@@ -19,6 +19,30 @@
               <label htmlFor="exampleInputEmail1">Email</label>
               <input type="text" class="form-control" v-model="email" name="email" id="email" aria-describedby="emailHelp" placeholder="Email" />
             </div>
+            <div class="form-group col-md-12">
+              <label htmlFor="exampleInputEmail2">Telephone</label>
+              <input type="text" class="form-control" v-model="tel" name="tel" id="tel" aria-describedby="telHelp" placeholder="tel" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-4">
+              <label htmlFor="exampleInputNumero">Numero</label>
+              <input type="text" class="form-control" v-model="numero" name="numero" id="numero" aria-describedby="numeroHelp" placeholder="Numero de rue" />
+            </div>
+            <div class="form-group col-md-8">
+              <label htmlFor="exampleInputAdresse">Adresse</label>
+              <input type="text" class="form-control" v-model="adresse" name="adresse" id="adresse" aria-describedby="adresseHelp" placeholder="Adresse" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-4">
+              <label htmlFor="exampleInputPostCode">Code Postal</label>
+              <input type="text" class="form-control" v-model="postcode" name="postcode" id="postcode" aria-describedby="postcodeHelp" placeholder="Code Postal" />
+            </div>
+            <div class="form-group col-md-8">
+              <label htmlFor="exampleInputVille">Ville</label>
+              <input type="text" class="form-control" v-model="ville" name="ville" id="ville" aria-describedby="villeHelp" placeholder="Ville" />
+            </div>
           </div>
           <button type="button" @click='createUser()' class="btn btn-danger">Create</button>
         </form>
@@ -34,7 +58,12 @@ export default {
     return {
       firstName: '',
       lastName: '',
-      email: ''
+      email: '',
+      tel: '',
+      numero: '',
+      adresse: '',
+      postcode: '',
+      ville: ''
     }
   },
   methods: {
@@ -43,7 +72,12 @@ export default {
       const payload = {
         firstName: this.firstName,
         lastName: this.lastName,
-        email: this.email
+        email: this.email,
+        tel: this.tel,
+        numero: this.numero,
+        adresse: this.adresse,
+        postcode: this.postcode,
+        ville: this.ville
       }
       this.$emit('createUser', payload)
       this.clearForm();
@@ -52,6 +86,11 @@ export default {
       this.firstName = "";
       this.lastName = "";
       this.email = "";
+      this.tel = "";
+      this.numero = "";
+      this.adresse = "";
+      this.postcode = "";
+      this.ville = "";
     }
   }
 }
