@@ -1,11 +1,15 @@
 package fr.rennes.epsi.poec.canapi.domain;
 
 public class Client {
+
+	private int id;
 	private String nom;
 	private String prenom;
-	private String telephone;
+	private String tel;
 	private String email;
-	
+	private int adresse_client_id;
+
+
 	public String getNom() {
 		return nom;
 	}
@@ -18,11 +22,11 @@ public class Client {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-	public String getTelephone() {
-		return telephone;
+	public String getTel() {
+		return tel;
 	}
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
+	public void setTel(String tel) {
+		this.tel = tel;
 	}
 	public String getEmail() {
 		return email;
@@ -30,6 +34,16 @@ public class Client {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public int getAdresse_client_id() {
+		return adresse_client_id;
+	}
+	public void setAdresse_client_id(int adresse_client_id) {
+		this.adresse_client_id = adresse_client_id;
+	}
 }

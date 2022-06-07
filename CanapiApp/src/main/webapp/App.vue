@@ -6,9 +6,6 @@
   <meta name="viewport" content="device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Canapi CRM">
   <meta name="author" content="MSPR Triopikeur">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="style.css">
   <title>Bienvenue sur Canapi</title>
 </head>
 
@@ -19,7 +16,7 @@
     <!--Navbar Aside-->
     <div class="col-auto col-md-3 col-xl-3 px-sm-2 px-0 aside_content">
       <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 min-vh-100">
-        <a href="home.html" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto">
+        <a href="#" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto">
             <span class="fs-5 d-none d-sm-inline" style="text-align: center;">
               <img class="logo_canapi" alt="logo_canapi" src="./ressources/canapi_transparent.png">
             </span>
@@ -57,8 +54,8 @@
         </div>
         <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2"
              style="margin: 0 auto; width: 100%;">
+          <h2>Client</h2>
           <table class="table table2">
-            <h2>Stock Faible</h2>
             <thead>
             <tr style="font-size: 0.7em;">
               <th scope="col">PRODUIT ID</th>
@@ -67,21 +64,11 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <th scope="row">6</th>
-              <td>3</td>
-              <td>0001</td>
-            </tr>
-            <tr>
-              <th scope="row">8</th>
-              <td>3</td>
-              <td>0002</td>
-            </tr>
-            <tr style="border-bottom: hidden;">
-              <th scope="row">2</th>
-              <td>3</td>
-              <td>0000</td>
-            </tr>
+           <!-- <tr v-for="client in Clients">
+              <th scope="row">{{ client.nom }}</th>
+              <td>{{ client.prenom }}</td>
+              <td>{{ client.email }}</td>
+            </tr>-->
             </tbody>
           </table>
         </div>
@@ -90,42 +77,49 @@
           </span>
       </div>
     </div>
-    <div class="content">
-      <span><a class="logout" href="#">Deconnexion</a></span>
-      <h1 class="welcome_title">Bonjour User</h1>
-      <div class="card dashboard">
-        <div class="card-header dashboard_header">
-          Tableau de bord
-        </div>
-        <div class="card-body">
-          <div class="boutons_acces_principaux d-flex justify-content-around">
-            <a href="#" class="btn btn-outline-secondary main_access_btn">Portefeuille Client</a>
-            <a href="produits.html" class="btn btn-outline-secondary main_access_btn">Listing Produits</a>
-            <a href="#" class="btn btn-outline-secondary main_access_btn">Listing Commandes</a>
-            <a href="#" class="btn btn-outline-secondary main_access_btn">Stats Commerciales</a>
-          </div>
-          <h5 class="card-title">Accéder rapidement :</h5>
-          <div class="boutons_acces_options d-flex justify-content-evenly" id="first_option_line">
-            <a href="#" class="btn btn-secondary option_access_btn btn-sm">Ajouter un client</a>
-            <a href="#" class="btn btn-secondary option_access_btn btn-sm">Ajouter un produit</a>
-            <a href="#" class="btn btn-secondary option_access_btn btn-sm">Réassort produits</a>
-          </div>
-          <div class="boutons_acces_options d-flex justify-content-evenly" id="second_option_line">
-            <a href="#" class="btn btn-secondary option_access_btn btn-sm">Nouvelle commande</a>
-            <a href="#" class="btn btn-secondary option_access_btn btn-sm">Lister les commandes</a>
-            <a href="#" class="btn btn-secondary option_access_btn btn-sm">Effectif interne</a>
-          </div>
-        </div>
-      </div>
+    <div>
+      <dashboard />
+      <CreateUser/>
     </div>
   </div>
+
 </div>
 </body>
 </html>
 </template>
 
 <script>
+import dashboard from "./components/dashboard";
+import axios from "axios";
+import CreateUser from "./components/CreateUser";
+import Dashboard from "@/main/webapp/components/dashboard";
+const instance = axios.create({baseURL:"http://localhost:8081"})
 
+export default {
+  name: 'App',
+  components: {
+    Dashboard,
+    CreateUser
+  },
+  data() {
+    return {
+      Clients:[]
+    }
+  },
+  mounted() {
+    instance.get('/public/listClient')
+        .then(response => {
+          this.Clients = response.data.data
+        })
+  },
+  methods :{
+    showModal(){
+
+    }
+  },
+
+
+}
 </script>
 
 

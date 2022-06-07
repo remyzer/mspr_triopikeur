@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import fr.rennes.epsi.poec.canapi.domain.Produit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -25,8 +26,22 @@ public class ClientDAO {
     }
 
     public List<Client> getList()throws SQLException {
-        //TODO
-        return null;
+        List<Client> list = new ArrayList<>();
+        String sql = "select id, nom, prenom, tel, email, adresse_client_id from client";
+        Statement stmt = ds.getConnection().createStatement();
+        ResultSet rs = stmt.executeQuery(sql);
+        while (rs.next()) {
+            Client client = new Client();
+            client.setId(rs.getInt(1));
+            client.setNom(rs.getString(2));
+            client.setPrenom(rs.getString(3));
+            client.setTel(rs.getString(4));
+            client.setEmail(rs.getString(5));
+            client.setAdresse_client_id(rs.getInt(6));
+
+            list.add(client);
+        }
+        return list;
     }
 
     public void updateClient(Client client) throws SQLException {

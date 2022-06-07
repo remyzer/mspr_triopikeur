@@ -27,7 +27,7 @@ public class ProduitDAO {
 	
 	public List<Produit> getList() throws SQLException {
 		List<Produit> list = new ArrayList<>();
-		String sql = "select id, libelle, prix, type from article";
+		String sql = "select id, libelle, prix, type_produit_id from produit";
 		Statement stmt = ds.getConnection().createStatement();
 		ResultSet rs = stmt.executeQuery(sql);
 		while (rs.next()) {
