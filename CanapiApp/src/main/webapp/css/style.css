@@ -1,18 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600&display=swap');
 
-:root {
-    --background-color: #F1F1F1;
-    --blue-color: #5E17EB;
-    --green-color: #5DB553;
-    --red-color: #FF2B2B;
-    --font-color: #707070;
-}
-
 
 body {
     width: 100%;
     overflow-x: hidden;
-    color:var(--font-color);
+    color: #707070;
     font-family: 'Raleway', 'sans-serif';
     font-weight: 400;
 }
@@ -23,7 +15,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .aside_content {
-    background-color: var(--background-color);
+    background-color: #F1F1F1;
 }
 
 .logo_canapi {
@@ -51,18 +43,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .mail, .mail:focus {
-    background-color: var(--blue-color);
+    background-color: #5E17EB;
     text-decoration: none;
     color: white;
     font-size: 0.8em;
     transition: all .2s ease-in;
-    border: 1px solid var(--blue-color);
+    border: 1px solid #5E17EB;
 }
 
 .mail:hover {
     background-color: white;
-    border: 1px solid var(--blue-color);
-    color: var(--blue-color);
+    border: 1px solid #5E17EB;
+    color: #5E17EB;
     transform: scale(0.96);
 }
 
@@ -86,7 +78,7 @@ h2 {
 }
 
 .logout {
-    color: var(--font-color);
+    color: #707070;
     font-size: 0.7em;
 }
 
@@ -103,7 +95,7 @@ h2 {
     text-align: center;
     font-size: 1.2em;
     font-weight: 600;
-    background-color: var(--blue-color);
+    background-color: #5E17EB;
     color: white;
     border-radius: 20px;
 }
@@ -140,8 +132,8 @@ h2 {
 .option_access_btn:hover {
     transform: scale(0.96);
     background-color: white;
-    outline: var(--font-color);
-    color: var(--font-color);
+    outline: #707070;
+    color: #707070;
 }
 
 .btn:focus {

@@ -1,11 +1,6 @@
 <template>
-
 <!DOCTYPE html>
 <html>
-
-<!DOCTYPE html>
-<html>
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="device-width, initial-scale=1, shrink-to-fit=no">
@@ -124,14 +119,16 @@
       </div>
     </div>
   </div>
+</div>
 </body>
-
-
 </html>
 </template>
+
 <script>
 
 </script>
+
+
 <style>
 @import "./css/style.css";
 </style>
