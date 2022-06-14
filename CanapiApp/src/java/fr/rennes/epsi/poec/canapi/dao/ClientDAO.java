@@ -1,14 +1,13 @@
 package fr.rennes.epsi.poec.canapi.dao;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
 
 import fr.rennes.epsi.poec.canapi.domain.Produit;
+import fr.rennes.epsi.poec.canapi.exception.TechnicalException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -22,7 +21,21 @@ public class ClientDAO {
 
 
     public void addClient(Client client)throws SQLException {
-        //TODO
+        String sql = "insert into client" +
+                "(nom, prenom, tel, email, adresse_client_id) VALUES (?,?,?,?,?)";
+        try {
+            Connection conn = ds.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            ps.setString(1, client.getNom());
+            ps.setString(2, client.getPrenom());
+            ps.setString(3, client.getTel());
+            ps.setString(4, client.getEmail());
+            ps.setInt(5,client.getAdresse_client_id());
+        }
+        catch (SQLException e) {
+            throw new TechnicalException(e);
+        }
     }
 
     public List<Client> getList()throws SQLException {

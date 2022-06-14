@@ -58,6 +58,4 @@ public class ClientService {
             throw new TechnicalException(e);
         }
     }
-
-
 }

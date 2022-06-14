@@ -40,4 +40,5 @@ public class ClientController {
     public void deleteClient(Client client) {
         clientService.deleteClient(client);
     }
+
 }

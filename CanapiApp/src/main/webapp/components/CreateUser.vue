@@ -63,7 +63,8 @@ export default {
       numero: '',
       adresse: '',
       postcode: '',
-      ville: ''
+      ville: '',
+      id_adresse_client: ''
     }
   },
   methods: {
