@@ -52,6 +52,10 @@
 </template>
 
 <script>
+import axios from "axios";
+const instance = axios.create({baseURL:"http://localhost:8081"})
+
+
 export default {
   name: 'CreateUser',
   data() {
@@ -69,18 +73,26 @@ export default {
   },
   methods: {
     createUser() {
-      console.log(this.firstName)
-      const payload = {
-        firstName: this.firstName,
-        lastName: this.lastName,
-        email: this.email,
-        tel: this.tel,
+      instance.get('/public/getIdAdresse')
+          .then(response => {
+            this.id_adresse_client = response.data.data
+            console.log(this.id_adresse_client)
+          })
+      const adresse = {
         numero: this.numero,
         adresse: this.adresse,
         postcode: this.postcode,
         ville: this.ville
       }
-      this.$emit('createUser', payload)
+      const client = {
+        firstName: this.firstName,
+        lastName: this.lastName,
+        email: this.email,
+        tel: this.tel,
+        id_adresse_client: this.id_adresse_client +1
+      }
+      /*instance.post('/public/addAdresse', adresse)
+      instance.post('/public/addClient',client)*/
       this.clearForm();
     },
     clearForm() {

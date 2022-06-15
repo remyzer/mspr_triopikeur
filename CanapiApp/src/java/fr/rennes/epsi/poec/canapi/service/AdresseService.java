@@ -37,4 +37,14 @@ public class AdresseService {
             throw new TechnicalException(e);
         }
     }
+
+    public Adresse getAdresseByClientId(int clientId) {
+        try {
+            return adresseDAO.getAdresseByClientId(clientId);
+        }
+        catch (SQLException e) {
+            logger.error(e.getMessage(), e);
+            throw new TechnicalException(e);
+        }
+    }
 }

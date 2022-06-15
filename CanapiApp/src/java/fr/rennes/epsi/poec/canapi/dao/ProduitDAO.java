@@ -1,13 +1,12 @@
 package fr.rennes.epsi.poec.canapi.dao;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
 
+import fr.rennes.epsi.poec.canapi.exception.TechnicalException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -20,9 +19,19 @@ public class ProduitDAO {
 	private DataSource ds;
 
 	public void addProduit(Produit produit) throws SQLException {
-		String sql = "Insert into produit (libelle, prix, type_produit_id) values ('"+ produit.getLibelle() +"', '" + produit.getPrix() +"', '" + produit.getType() + "')";
-		Statement stmt = ds.getConnection().createStatement();
-		stmt.executeUpdate(sql);
+		String sql = "Insert into produit (libelle, prix, quantite, type_produit_id) values (?,?,?,?)";
+		try {
+			Connection conn = ds.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+
+			ps.setString(1, produit.getLibelle());
+			ps.setDouble(2, produit.getPrix());
+			ps.setInt(3, produit.getQuantite());
+			ps.setString(4, produit.getType());
+		}
+		catch (SQLException e) {
+			throw new TechnicalException(e);
+		}
 	}
 	
 	public List<Produit> getList() throws SQLException {
@@ -43,11 +52,34 @@ public class ProduitDAO {
 	}
 
 	public void updateProduit(Produit produit) throws SQLException {
-		//TODO
+		String sql = "update produit set libelle = ?, prix = ?, quantite = ?,type_produit_id = ?" +
+				"where id = ?";
+		try {
+			Connection conn = ds.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+
+			ps.setString(1, produit.getLibelle());
+			ps.setDouble(2, produit.getPrix());
+			ps.setInt(3, produit.getQuantite());
+			ps.setString(4, produit.getType());
+			ps.setInt(5,produit.getId());
+		}
+		catch (SQLException e) {
+			throw new TechnicalException(e);
+		}
 	}
 
 	public void deleteProduit(Produit produit) throws SQLException {
-		//TODO
+		String sql = "delete from produit where produit.id = ?";
+		try {
+			Connection conn = ds.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+
+			ps.setInt(1, produit.getId());
+		}
+		catch (SQLException e) {
+			throw new TechnicalException(e);
+		}
 	}
 	
 	

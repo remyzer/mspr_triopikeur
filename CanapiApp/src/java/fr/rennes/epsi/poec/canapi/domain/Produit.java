@@ -6,7 +6,9 @@ public class Produit {
 	private String type;
 	private String libelle;
 	private double prix;
-	
+
+	private int quantite;
+
 	public int getId() {
 		return id;
 	}
@@ -31,5 +33,12 @@ public class Produit {
 	public void setPrix(double prix) {
 		this.prix = prix;
 	}
-	
+
+	public int getQuantite() {
+		return quantite;
+	}
+
+	public void setQuantite(int quantite) {
+		this.quantite = quantite;
+	}
 }

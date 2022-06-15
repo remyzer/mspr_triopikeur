@@ -20,8 +20,15 @@ public class AdresseController {
         return adresseService.getIdAdresse();
     }
 
+    @CrossOrigin
     @PostMapping("/public/addAdresse")
     public void addAdresse(Adresse adresse) {
         adresseService.addAdresse(adresse);
+    }
+
+    @CrossOrigin
+    @GetMapping("/public/getAdresseById")
+    public Adresse getAdresseByClientId(int clientId) {
+        return adresseService.getAdresseByClientId(clientId);
     }
 }

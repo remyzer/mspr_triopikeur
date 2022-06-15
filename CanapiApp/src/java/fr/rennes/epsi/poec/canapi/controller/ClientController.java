@@ -17,6 +17,7 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
+    @CrossOrigin
     @PostMapping("/public/addClient")
     public void addClient(Client client) {
         clientService.addClient(client);

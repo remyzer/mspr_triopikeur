@@ -58,11 +58,35 @@ public class ClientDAO {
     }
 
     public void updateClient(Client client) throws SQLException {
-        //TODO
+        String sql = "update client set nom = ?, prenom = ?, tel = ?, email = ?" +
+                "where id = ?";
+        try {
+            Connection conn = ds.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            ps.setString(1, client.getNom());
+            ps.setString(2, client.getPrenom());
+            ps.setString(3, client.getTel());
+            ps.setString(4, client.getEmail());
+            ps.setInt(5,client.getId());
+        }
+        catch (SQLException e) {
+            throw new TechnicalException(e);
+        }
     }
 
     public void deleteClient(Client client) throws SQLException{
-        //TODO
+        String sql = "delete from client " +
+                "where client.id = ? ";
+        try {
+            Connection conn = ds.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            ps.setInt(1,client.getId());
+        }
+        catch (SQLException e) {
+            throw new TechnicalException(e);
+        }
     }
 
 
