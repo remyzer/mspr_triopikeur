@@ -4,10 +4,7 @@ import fr.rennes.epsi.poec.canapi.domain.Client;
 import fr.rennes.epsi.poec.canapi.domain.Response;
 import fr.rennes.epsi.poec.canapi.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,7 +16,7 @@ public class ClientController {
 
     @CrossOrigin
     @PostMapping("/public/addClient")
-    public void addClient(Client client) {
+    public void addClient(@RequestBody Client client) {
         clientService.addClient(client);
     }
 
@@ -33,7 +30,7 @@ public class ClientController {
     }
 
     @PostMapping("/public/updateClient")
-    public void updateClient(Client client) {
+    public void updateClient(@RequestBody Client client) {
         clientService.updateClient(client);
     }
 

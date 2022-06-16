@@ -19,19 +19,20 @@ public class ClientDAO {
     @Autowired
     private DataSource ds;
 
-
     public void addClient(Client client)throws SQLException {
         String sql = "insert into client" +
-                "(nom, prenom, tel, email, adresse_client_id) VALUES (?,?,?,?,?)";
+                "(nom, prenom, tel, email, adresse, code_postal, ville) VALUES (?,?,?,?,?,?,?)";
         try {
             Connection conn = ds.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
-
             ps.setString(1, client.getNom());
             ps.setString(2, client.getPrenom());
             ps.setString(3, client.getTel());
             ps.setString(4, client.getEmail());
-            ps.setInt(5,client.getAdresse_client_id());
+            ps.setString(5,client.getAdresse());
+            ps.setString(6,client.getCode_postal());
+            ps.setString(7,client.getVille());
+            ps.executeUpdate();
         }
         catch (SQLException e) {
             throw new TechnicalException(e);
@@ -40,7 +41,7 @@ public class ClientDAO {
 
     public List<Client> getList()throws SQLException {
         List<Client> list = new ArrayList<>();
-        String sql = "select id, nom, prenom, tel, email, adresse_client_id from client";
+        String sql = "select id, nom, prenom, tel, email, adresse,code_postal,ville from client";
         Statement stmt = ds.getConnection().createStatement();
         ResultSet rs = stmt.executeQuery(sql);
         while (rs.next()) {
@@ -50,7 +51,9 @@ public class ClientDAO {
             client.setPrenom(rs.getString(3));
             client.setTel(rs.getString(4));
             client.setEmail(rs.getString(5));
-            client.setAdresse_client_id(rs.getInt(6));
+            client.setAdresse(rs.getString(6));
+            client.setCode_postal(rs.getString(7));
+            client.setVille(rs.getString(8));
 
             list.add(client);
         }
@@ -58,7 +61,7 @@ public class ClientDAO {
     }
 
     public void updateClient(Client client) throws SQLException {
-        String sql = "update client set nom = ?, prenom = ?, tel = ?, email = ?" +
+        String sql = "update client set nom = ?, prenom = ?, tel = ?, email = ?, adresse = ?, code_postal = ?, ville = ?" +
                 "where id = ?";
         try {
             Connection conn = ds.getConnection();
@@ -68,7 +71,9 @@ public class ClientDAO {
             ps.setString(2, client.getPrenom());
             ps.setString(3, client.getTel());
             ps.setString(4, client.getEmail());
-            ps.setInt(5,client.getId());
+            ps.setString(5,client.getAdresse());
+            ps.setString(6,client.getCode_postal());
+            ps.setString(7,client.getVille());
         }
         catch (SQLException e) {
             throw new TechnicalException(e);

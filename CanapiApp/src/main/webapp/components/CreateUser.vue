@@ -2,16 +2,16 @@
   <div class="container">
     <div class="row">
       <div class="col-md-7 mrgnbtm">
-        <h2>Create User</h2>
+        <h2>Ajouter Client</h2>
         <form>
           <div class="row">
             <div class="form-group col-md-6">
-              <label htmlFor="exampleInputEmail1">First Name</label>
-              <input type="text" class="form-control" v-model="firstName" name="firstname" id="firstname" aria-describedby="emailHelp" placeholder="First Name" />
+              <label htmlFor="exampleInputEmail1">Prénom</label>
+              <input type="text" class="form-control" v-model="nom" name="firstname" id="firstname" aria-describedby="emailHelp" placeholder="First Name" />
             </div>
             <div class="form-group col-md-6">
-              <label htmlFor="exampleInputPassword1">Last Name</label>
-              <input type="text" class="form-control" v-model="lastName" name="lastname" id="lastname" placeholder="Last Name" />
+              <label htmlFor="exampleInputPassword1">Nom</label>
+              <input type="text" class="form-control" v-model="prenom" name="lastname" id="lastname" placeholder="Last Name" />
             </div>
           </div>
           <div class="row">
@@ -25,10 +25,6 @@
             </div>
           </div>
           <div class="row">
-            <div class="form-group col-md-4">
-              <label htmlFor="exampleInputNumero">Numero</label>
-              <input type="text" class="form-control" v-model="numero" name="numero" id="numero" aria-describedby="numeroHelp" placeholder="Numero de rue" />
-            </div>
             <div class="form-group col-md-8">
               <label htmlFor="exampleInputAdresse">Adresse</label>
               <input type="text" class="form-control" v-model="adresse" name="adresse" id="adresse" aria-describedby="adresseHelp" placeholder="Adresse" />
@@ -37,7 +33,7 @@
           <div class="row">
             <div class="form-group col-md-4">
               <label htmlFor="exampleInputPostCode">Code Postal</label>
-              <input type="text" class="form-control" v-model="postcode" name="postcode" id="postcode" aria-describedby="postcodeHelp" placeholder="Code Postal" />
+              <input type="text" class="form-control" v-model="code_postal" name="postcode" id="postcode" aria-describedby="postcodeHelp" placeholder="Code Postal" />
             </div>
             <div class="form-group col-md-8">
               <label htmlFor="exampleInputVille">Ville</label>
@@ -60,49 +56,43 @@ export default {
   name: 'CreateUser',
   data() {
     return {
-      firstName: '',
-      lastName: '',
+      nom: '',
+      prenom: '',
       email: '',
       tel: '',
-      numero: '',
       adresse: '',
-      postcode: '',
+      code_postal: '',
       ville: '',
-      id_adresse_client: ''
     }
   },
   methods: {
     createUser() {
-      instance.get('/public/getIdAdresse')
-          .then(response => {
-            this.id_adresse_client = response.data.data
-            console.log(this.id_adresse_client)
-          })
-      const adresse = {
-        numero: this.numero,
-        adresse: this.adresse,
-        postcode: this.postcode,
-        ville: this.ville
-      }
-      const client = {
-        firstName: this.firstName,
-        lastName: this.lastName,
+      const client= {
+        nom: this.nom,
+        prenom: this.prenom,
         email: this.email,
         tel: this.tel,
-        id_adresse_client: this.id_adresse_client +1
+        adresse: this.adresse,
+        code_postal: this.code_postal,
+        ville: this.ville
       }
-      /*instance.post('/public/addAdresse', adresse)
-      instance.post('/public/addClient',client)*/
+      instance.post('/public/addClient', client)
+          .then(response => {
+            console.log(response)
+            console.log(client)
+          })
+          .catch(error => {
+            console.log(error.response)
+          });
       this.clearForm();
     },
     clearForm() {
-      this.firstName = "";
-      this.lastName = "";
+      this.nom = "";
+      this.prenom = "";
       this.email = "";
       this.tel = "";
-      this.numero = "";
       this.adresse = "";
-      this.postcode = "";
+      this.code_postal = "";
       this.ville = "";
     }
   }

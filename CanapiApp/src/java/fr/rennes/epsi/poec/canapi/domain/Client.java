@@ -7,7 +7,9 @@ public class Client {
 	private String prenom;
 	private String tel;
 	private String email;
-	private int adresse_client_id;
+	private String adresse;
+	private String code_postal;
+	private String ville;
 
 
 	public String getNom() {
@@ -40,10 +42,28 @@ public class Client {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getAdresse_client_id() {
-		return adresse_client_id;
+
+	public String getAdresse() {
+		return adresse;
 	}
-	public void setAdresse_client_id(int adresse_client_id) {
-		this.adresse_client_id = adresse_client_id;
+
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+
+	public String getCode_postal() {
+		return code_postal;
+	}
+
+	public void setCode_postal(String code_postal) {
+		this.code_postal = code_postal;
+	}
+
+	public String getVille() {
+		return ville;
+	}
+
+	public void setVille(String ville) {
+		this.ville = ville;
 	}
 }
