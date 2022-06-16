@@ -79,47 +79,50 @@
     </div>
     <div>
       <dashboard />
-      <CreateUser/>
+      <CreateUser />
+      <CreateProduct />
     </div>
   </div>
-
 </div>
 </body>
 </html>
 </template>
 
 <script>
-import dashboard from "./components/dashboard";
 import axios from "axios";
 import CreateUser from "./components/CreateUser";
 import Dashboard from "@/main/webapp/components/dashboard";
+import CreateProduct from "@/main/webapp/components/CreateProduct";
+
 const instance = axios.create({baseURL:"http://localhost:8081"})
+
 
 export default {
   name: 'App',
   components: {
     Dashboard,
-    CreateUser
+    CreateUser,
+    CreateProduct,
   },
   data() {
     return {
-      Clients:[]
+      Clients:[],
     }
   },
+
   mounted() {
     instance.get('/public/listClient')
         .then(response => {
           this.Clients = response.data.data
         })
   },
+
   methods :{
-    showModal(){
 
     }
-  },
-
 
 }
+
 </script>
 
 
