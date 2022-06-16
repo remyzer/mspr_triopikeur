@@ -49,9 +49,9 @@ public class ProduitService {
 		}
 	}
 
-	public void deleteProduit(Produit produit) {
+	public void deleteProduit(int idProduit) {
 		try {
-			produitDAO.deleteProduit(produit);
+			produitDAO.deleteProduit(idProduit);
 		}
 		catch (SQLException e) {
 			logger.error(e.getMessage(), e);

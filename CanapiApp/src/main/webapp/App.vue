@@ -54,7 +54,7 @@
         </div>
         <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2"
              style="margin: 0 auto; width: 100%;">
-          <h2>Client</h2>
+          <h2>Stock Faible</h2>
           <table class="table table2">
             <thead>
             <tr style="font-size: 0.7em;">
@@ -64,11 +64,7 @@
             </tr>
             </thead>
             <tbody>
-           <!-- <tr v-for="client in Clients">
-              <th scope="row">{{ client.nom }}</th>
-              <td>{{ client.prenom }}</td>
-              <td>{{ client.email }}</td>
-            </tr>-->
+
             </tbody>
           </table>
         </div>
@@ -124,6 +120,9 @@
       <div v-show="show3">
       <listClient />
       </div>
+      <div v-show="true">
+        <listProduit />
+      </div>
     </div>
   </div>
 </div>
@@ -137,6 +136,7 @@ import CreateUser from "./components/CreateUser";
 import Dashboard from "@/main/webapp/components/dashboard";
 import CreateProduct from "@/main/webapp/components/CreateProduct";
 import listClient from "@/main/webapp/components/listClient";
+import listProduit from "@/main/webapp/components/listProduit";
 
 const instance = axios.create({baseURL:"http://localhost:8081"})
 
@@ -148,6 +148,7 @@ export default {
     CreateUser,
     CreateProduct,
     listClient,
+    listProduit
   },
   data: function () {
     return {

@@ -71,13 +71,13 @@ public class ProduitDAO {
 		}
 	}
 
-	public void deleteProduit(Produit produit) throws SQLException {
+	public void deleteProduit(int idProduit) throws SQLException {
 		String sql = "delete from produit where produit.id = ?";
 		try {
 			Connection conn = ds.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
 
-			ps.setInt(1, produit.getId());
+			ps.setInt(1, idProduit);
 			ps.executeUpdate();
 		}
 		catch (SQLException e) {

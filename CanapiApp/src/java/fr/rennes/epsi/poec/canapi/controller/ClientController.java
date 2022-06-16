@@ -29,14 +29,16 @@ public class ClientController {
         return response ;
     }
 
+    @CrossOrigin
     @PostMapping("/public/updateClient")
     public void updateClient(@RequestBody Client client) {
         clientService.updateClient(client);
     }
 
+    @CrossOrigin
     @PostMapping("/public/deleteClient")
-    public void deleteClient(Client client) {
-        clientService.deleteClient(client);
+    public void deleteClient(@RequestBody int idClient) {
+        clientService.deleteClient(idClient);
     }
 
 }

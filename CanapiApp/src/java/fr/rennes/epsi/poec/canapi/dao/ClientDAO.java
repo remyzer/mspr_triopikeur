@@ -81,14 +81,14 @@ public class ClientDAO {
         }
     }
 
-    public void deleteClient(Client client) throws SQLException{
+    public void deleteClient(int idClient) throws SQLException{
         String sql = "delete from client " +
                 "where client.id = ? ";
         try {
             Connection conn = ds.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
 
-            ps.setInt(1,client.getId());
+            ps.setInt(1,idClient);
             ps.executeUpdate();
         }
         catch (SQLException e) {

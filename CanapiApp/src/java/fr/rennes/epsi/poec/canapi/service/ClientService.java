@@ -49,9 +49,9 @@ public class ClientService {
         }
     }
 
-    public void deleteClient(Client client) {
+    public void deleteClient(int idClient) {
         try {
-            clientDAO.deleteClient(client);
+            clientDAO.deleteClient(idClient);
         }
         catch (SQLException e) {
             logger.error(e.getMessage(), e);
