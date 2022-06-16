@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-md-7 mrgnbtm">
-        <h2>Ajouter Client</h2>
+      <div class="col-md-7 mrgnbtm card add_client d-flex justify-content-center" id="add_client">
+        <h2>Ajouter un client</h2>
         <form>
           <div class="row">
             <div class="form-group col-md-6">
