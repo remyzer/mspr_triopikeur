@@ -21,7 +21,10 @@
             </div>
             <div class="form-group col-md-12">
               <label htmlFor="categoryIdInput">ID de catégorie</label>
-              <input type="number" class="form-control" v-model="idcategory" name="idcategory" id="idcategory" aria-describedby="idcategoryHelp" placeholder="ID de catégorie" />
+              <!--<input type="number" class="form-control" v-model="type_produit_id" name="idcategory" id="idcategory" aria-describedby="idcategoryHelp" placeholder="ID de catégorie" />-->
+              <select v-model="type_produit_id">
+                <option v-for="type_produit in type_produit_list"  :value="parseInt(type_produit.id)">{{ type_produit.id }} - {{ type_produit.libelle }}</option>
+              </select>
             </div>
           </div>
           <button type="button" style="margin-top: 20px" @click='createProduct()' class="btn btn-success">Create</button>
@@ -32,6 +35,8 @@
 </template>
 
 <script>
+import axios from "axios";
+const instance = axios.create({baseURL:"http://localhost:8081"})
 
 export default {
   name: 'CreateProduct',
@@ -40,26 +45,38 @@ export default {
       libelle: '',
       prix: '',
       quantite: '',
-      idcategory: '',
+      type_produit_id: '',
+      type_produit_list: {}
     }
+  },
+  mounted() {
+    instance.post("/public/listTypeProduit")
+        .then(response => {
+          this.type_produit_list = response.data.data
+        })
   },
   methods: {
     createProduct() {
-      console.log(this.libelle)
-      const payload = {
+      const produit = {
         libelle: this.libelle,
         prix: this.prix,
         quantite: this.quantite,
-        idcategory: this.idcategory,
+        type_produit_id: this.type_produit_id,
       }
-      this.$emit('createProduct', payload)
+     instance.post("/public/addProduit",produit)
+         .then(response => {
+           console.log(response)
+         })
+         .catch(error => {
+           console.log(error.response)
+         });
       this.clearForm();
     },
     clearForm() {
       this.libelle = "";
       this.prix = "";
       this.quantite = "";
-      this.idcategory = "";
+      this.type_produit_id = "";
     }
   }
 }

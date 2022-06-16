@@ -3,9 +3,7 @@ package fr.rennes.epsi.poec.canapi.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import fr.rennes.epsi.poec.canapi.domain.Produit;
 import fr.rennes.epsi.poec.canapi.service.ProduitService;
@@ -21,8 +19,9 @@ public class ProduitController {
 		return produitService.getList();
 	}
 
+	@CrossOrigin
 	@PostMapping("/public/addProduit")
-	public void addProduit(Produit produit) {
+	public void addProduit(@RequestBody Produit produit) {
 		produitService.addProduit(produit);
 	}
 

@@ -27,7 +27,8 @@ public class ProduitDAO {
 			ps.setString(1, produit.getLibelle());
 			ps.setDouble(2, produit.getPrix());
 			ps.setInt(3, produit.getQuantite());
-			ps.setString(4, produit.getType());
+			ps.setInt(4, produit.getType_produit_id());
+			ps.executeUpdate();
 		}
 		catch (SQLException e) {
 			throw new TechnicalException(e);
@@ -44,7 +45,7 @@ public class ProduitDAO {
 			produit.setId(rs.getInt(1));
 			produit.setLibelle(rs.getString(2));
 			produit.setPrix(rs.getDouble(3));
-			produit.setType(rs.getString(4));
+			produit.setType_produit_id(rs.getInt(4));
 			
 			list.add(produit);
 		}		
@@ -61,8 +62,9 @@ public class ProduitDAO {
 			ps.setString(1, produit.getLibelle());
 			ps.setDouble(2, produit.getPrix());
 			ps.setInt(3, produit.getQuantite());
-			ps.setString(4, produit.getType());
+			ps.setInt(4, produit.getType_produit_id());
 			ps.setInt(5,produit.getId());
+			ps.executeUpdate();
 		}
 		catch (SQLException e) {
 			throw new TechnicalException(e);
@@ -76,6 +78,7 @@ public class ProduitDAO {
 			PreparedStatement ps = conn.prepareStatement(sql);
 
 			ps.setInt(1, produit.getId());
+			ps.executeUpdate();
 		}
 		catch (SQLException e) {
 			throw new TechnicalException(e);

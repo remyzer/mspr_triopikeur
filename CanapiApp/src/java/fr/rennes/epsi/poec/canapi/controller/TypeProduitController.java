@@ -1,8 +1,12 @@
 package fr.rennes.epsi.poec.canapi.controller;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
+import fr.rennes.epsi.poec.canapi.domain.Client;
+import fr.rennes.epsi.poec.canapi.domain.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,9 +19,13 @@ public class TypeProduitController {
 	@Autowired
 	private TypeProduitService typeProduitService;
 	
-	@PostMapping("/user/listTypeProduit")
-	public List<TypeProduit> getType() {
-		return typeProduitService.getType();
+	@CrossOrigin
+	@PostMapping("/public/listTypeProduit")
+	public Response<List<TypeProduit>> getType() {
+		List<TypeProduit> typeProduit= typeProduitService.getType();
+		Response<List<TypeProduit>> response = new Response<>();
+		response.setData(typeProduit);
+		return response ;
 	}
 	
 }

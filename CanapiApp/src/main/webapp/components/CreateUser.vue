@@ -79,7 +79,6 @@ export default {
       instance.post('/public/addClient', client)
           .then(response => {
             console.log(response)
-            console.log(client)
           })
           .catch(error => {
             console.log(error.response)

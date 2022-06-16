@@ -74,6 +74,7 @@ public class ClientDAO {
             ps.setString(5,client.getAdresse());
             ps.setString(6,client.getCode_postal());
             ps.setString(7,client.getVille());
+            ps.executeUpdate();
         }
         catch (SQLException e) {
             throw new TechnicalException(e);
@@ -88,6 +89,7 @@ public class ClientDAO {
             PreparedStatement ps = conn.prepareStatement(sql);
 
             ps.setInt(1,client.getId());
+            ps.executeUpdate();
         }
         catch (SQLException e) {
             throw new TechnicalException(e);
