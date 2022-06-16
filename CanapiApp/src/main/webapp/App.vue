@@ -78,9 +78,52 @@
       </div>
     </div>
     <div>
-      <dashboard />
-      <CreateUser />
+      <div class="content">
+        <span><a class="logout" href="#">Deconnexion</a></span>
+        <h1 class="welcome_title">Bonjour User</h1>
+        <div class="card dashboard">
+          <div class="card-header dashboard_header">
+            Tableau de bord
+          </div>
+          <div class="card-body">
+            <div class="boutons_acces_principaux d-flex justify-content-around">
+             <a href="#tableau_clients">
+               <button @click="(show3 = !show3) && (show = show2 = false)"
+                       class="btn btn-outline-secondary main_access_btn">Portefeuille Client</button>
+             </a>
+              <a href="#" class="btn btn-outline-secondary main_access_btn">Listing Produits</a>
+              <a href="#" class="btn btn-outline-secondary main_access_btn">Listing Commandes</a>
+              <a href="#" class="btn btn-outline-secondary main_access_btn">Stats Commerciales</a>
+            </div>
+            <h5 class="card-title">Accéder rapidement :</h5>
+            <div class="boutons_acces_options d-flex justify-content-evenly" id="first_option_line">
+             <a href="#add_client">
+               <button @click="(show = !show) && (show2 = show3 = false)"
+                       class="btn btn-secondary option_access_btn btn-sm">Ajouter un client</button>
+             </a>
+              <a href="#add_product">
+                <button @click="(show2 = !show2) && (show = show3 = false)"
+                        class="btn btn-secondary option_access_btn btn-sm">Ajouter un produit</button>
+              </a>
+              <a href="#" class="btn btn-secondary option_access_btn btn-sm">Réassort produits</a>
+            </div>
+            <div class="boutons_acces_options d-flex justify-content-evenly" id="second_option_line">
+              <a href="#" class="btn btn-secondary option_access_btn btn-sm">Nouvelle commande</a>
+              <a href="#" class="btn btn-secondary option_access_btn btn-sm">Lister les commandes</a>
+              <a href="#" class="btn btn-secondary option_access_btn btn-sm">Effectif interne</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-show="show">
+        <CreateUser />
+      </div>
+      <div v-show="show2">
       <CreateProduct />
+      </div>
+      <div v-show="show3">
+      <listClient />
+      </div>
     </div>
   </div>
 </div>
@@ -93,6 +136,7 @@ import axios from "axios";
 import CreateUser from "./components/CreateUser";
 import Dashboard from "@/main/webapp/components/dashboard";
 import CreateProduct from "@/main/webapp/components/CreateProduct";
+import listClient from "@/main/webapp/components/listClient";
 
 const instance = axios.create({baseURL:"http://localhost:8081"})
 
@@ -103,20 +147,15 @@ export default {
     Dashboard,
     CreateUser,
     CreateProduct,
+    listClient,
   },
-  data() {
+  data: function () {
     return {
-      Clients:[],
+      show: false,
+      show2 : false,
+      show3 : false
     }
   },
-
-  mounted() {
-    instance.get('/public/listClient')
-        .then(response => {
-          this.Clients = response.data.data
-        })
-  },
-
   methods :{
 
     }

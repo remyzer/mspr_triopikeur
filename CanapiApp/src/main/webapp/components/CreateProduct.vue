@@ -24,7 +24,7 @@
               <input type="number" class="form-control" v-model="idcategory" name="idcategory" id="idcategory" aria-describedby="idcategoryHelp" placeholder="ID de catégorie" />
             </div>
           </div>
-          <button type="button" style="margin-top: 20px" @click='createUser()' class="btn btn-success">Create</button>
+          <button type="button" style="margin-top: 20px" @click='createProduct()' class="btn btn-success">Create</button>
         </form>
       </div>
     </div>

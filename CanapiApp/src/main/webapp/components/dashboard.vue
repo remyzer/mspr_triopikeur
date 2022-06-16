@@ -15,7 +15,7 @@
         </div>
         <h5 class="card-title">Accéder rapidement :</h5>
         <div class="boutons_acces_options d-flex justify-content-evenly" id="first_option_line">
-          <a href="#add_client" class="btn btn-secondary option_access_btn btn-sm">Ajouter un client</a>
+          <button @click="show = !show" class="btn btn-secondary option_access_btn btn-sm">Ajouter un client</button>
           <a href="#add_product" class="btn btn-secondary option_access_btn btn-sm">Ajouter un produit</a>
           <a href="#" class="btn btn-secondary option_access_btn btn-sm">Réassort produits</a>
         </div>
@@ -33,6 +33,7 @@
 export default {
   name: "dashboard"
 }
+
 </script>
 
 <style scoped>
