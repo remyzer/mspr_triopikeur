@@ -74,6 +74,7 @@ public class ClientDAO {
             ps.setString(5,client.getAdresse());
             ps.setString(6,client.getCode_postal());
             ps.setString(7,client.getVille());
+            ps.setInt(8,client.getId());
             ps.executeUpdate();
         }
         catch (SQLException e) {

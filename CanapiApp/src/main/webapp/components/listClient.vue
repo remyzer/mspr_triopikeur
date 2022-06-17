@@ -1,7 +1,7 @@
 <template>
   <div class="container" >
     <div v-show="show">
-      <updateClient />
+      <updateClient :id-client="idClient" />
     </div>
     <h2>Users</h2>
     <b-table class="table table-bordered" id="tableau_clients">
@@ -22,7 +22,7 @@
         <td>{{ client.email }}</td>
         <td>{{ client.tel }}</td>
         <td><button @click="deleteClient(client)">Supprimer</button></td>
-        <td><button  @click="updateClient()">Modifier</button></td>
+        <td><button  @click="updateClient(client)">Modifier</button></td>
       </tr>
       </tbody>
     </b-table>
@@ -37,14 +37,15 @@ const instance = axios.create({baseURL:"http://localhost:8081"})
 
 export default {
   name: 'listClient',
-  props: ['listClient'],
+  props: [''],
   components: {
     updateClient
   },
   data() {
     return {
       Clients:[],
-      show: false
+      show: false,
+      idClient: 0,
     }
   },
   mounted() {
@@ -64,9 +65,11 @@ export default {
             }
           })
     },
-    updateClient: function () {
+    updateClient: function (client) {
       this.show = !this.show
+       this.idClient = client.id;
     }
+
   }
 }
 </script>
