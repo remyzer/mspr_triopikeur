@@ -4,7 +4,7 @@
       <updateProduit :id-produit="idProduit" />
     </div>
     <h2>Produits</h2>
-    <b-table class="table table-bordered" id="tableau_clients">
+    <table class="table table-bordered" id="list_produits">
       <thead>
       <tr>
         <th>Id</th>
@@ -25,7 +25,7 @@
         <td><button @click="updateProduit(produit)">Modifier</button></td>
       </tr>
       </tbody>
-    </b-table>
+    </table>
   </div>
 </template>
 

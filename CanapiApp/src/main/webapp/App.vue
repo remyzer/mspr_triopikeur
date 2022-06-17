@@ -69,8 +69,8 @@
           </table>
         </div>
         <span class="email_btn">
-            <a class="mail btn btn-outline-primary send_email_button" href="mailto:quentin.derriennic@epsi.fr">Envoyer un email</a>
-          </span>
+            <a class="mail btn btn-outline-primary mail" href="mailto:quentin.derriennic@epsi.fr">Envoyer un email</a>
+        </span>
       </div>
     </div>
     <div>
@@ -79,26 +79,28 @@
         <h1 class="welcome_title">Bonjour User</h1>
         <div class="card dashboard">
           <div class="card-header dashboard_header">
-            Tableau de bord
+            <span>Tableau de bord</span>
           </div>
           <div class="card-body">
             <div class="boutons_acces_principaux d-flex justify-content-around">
              <a href="#tableau_clients">
-               <button @click="(show3 = !show3) && (show = show2 = false)"
+               <button @click="showClients()"
                        class="btn btn-outline-secondary main_access_btn">Portefeuille Client</button>
              </a>
-              <a href="#" class="btn btn-outline-secondary main_access_btn">Listing Produits</a>
+              <a href="#list_produits">
+                 <button @click="showListProduits()"
+                         class="btn btn-outline-secondary main_access_btn">Listing Produits</button></a>
               <a href="#" class="btn btn-outline-secondary main_access_btn">Listing Commandes</a>
               <a href="#" class="btn btn-outline-secondary main_access_btn">Stats Commerciales</a>
             </div>
             <h5 class="card-title">Accéder rapidement :</h5>
             <div class="boutons_acces_options d-flex justify-content-evenly" id="first_option_line">
              <a href="#add_client">
-               <button @click="(show = !show) && (show2 = show3 = false)"
+               <button @click="showAddClients()"
                        class="btn btn-secondary option_access_btn btn-sm">Ajouter un client</button>
              </a>
               <a href="#add_product">
-                <button @click="(show2 = !show2) && (show = show3 = false)"
+                <button @click="showAddProduits()"
                         class="btn btn-secondary option_access_btn btn-sm">Ajouter un produit</button>
               </a>
               <a href="#" class="btn btn-secondary option_access_btn btn-sm">Réassort produits</a>
@@ -120,7 +122,7 @@
       <div v-show="show3">
       <listClient />
       </div>
-      <div v-show="true">
+      <div v-show="show4">
         <listProduit />
       </div>
     </div>
@@ -154,15 +156,37 @@ export default {
     return {
       show: false,
       show2 : false,
-      show3 : false
+      show3 : false,
+      show4 : false
     }
   },
   methods :{
-
+    showClients() {
+      this.show3 = true
+      this.show = false
+      this.show2 = false
+      this.show4 = false
+    },
+    showAddClients() {
+      this.show = true
+      this.show2 = false
+      this.show3 = false
+      this.show4 = false
+    },
+    showAddProduits() {
+      this.show = false
+      this.show2 = true
+      this.show3 = false
+      this.show4 = false
+    },
+    showListProduits() {
+      this.show = false
+      this.show2 = false
+      this.show3 = false
+      this.show4 = true
     }
-
+    }
 }
-
 </script>
 
 

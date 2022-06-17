@@ -54,7 +54,7 @@ const instance = axios.create({baseURL:"http://localhost:8081"})
 
 export default {
   name: 'CreateUser',
-  data() {
+  data : function () {
     return {
       nom: '',
       prenom: '',
